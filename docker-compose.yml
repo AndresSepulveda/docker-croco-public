@@ -18,21 +18,21 @@ services:
 # SERVICES ==============================
 
   interactive:
-    image: rsoutelino/roms
+    image: metocean/roms-public
     command: /bin/bash
     user:  roms
     volumes_from:
       - roms_volumes
 
   test:
-    image: rsoutelino/roms
+    image: metocean/roms-public
     user:  roms
     command:  cd /home/roms/applications/upwelling && ./run_mpich.sh
     volumes_from:
       - roms_volumes
 
   build:
-    image: rsoutelino/roms
+    image: metocean/roms-public
     user:  roms
     command: cd /home/roms/build && make roms roms_app=$roms_app
     volumes_from:
@@ -42,12 +42,12 @@ services:
 # VOLUMES ==============================
 
   roms_volumes:
-    image: rsoutelino/roms
+    image: metocean/roms-public
     volumes:
       - /data/roms/upwelling:/home/roms/applications/upwelling/out
 
   build_volumes:
-    image: rsoutelino/roms
+    image: metocean/roms-public
     volumes:
       - /source/roms/roms_src:/home/roms/roms_src
       - /source/roms/include:/home/roms/include
