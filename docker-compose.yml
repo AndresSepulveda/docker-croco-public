@@ -11,7 +11,9 @@ services:
       args:
         roms_username: ${roms_username}
         roms_password: ${roms_password}
-        netcdf-version: "4.4.1.1"
+        # netcdf_version: "4.1.3"
+        # hdf5_major: "1.8"
+        # hdf5_version: "1.8.3"
 
 # SERVICES ==============================
 

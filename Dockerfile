@@ -12,7 +12,7 @@ RUN useradd -u 1001 roms &&\
     mkdir -p /home/roms/applications/upwelling/out
 
 COPY build /home/roms/build
-# COPY packages /home/roms/packages
+COPY packages /home/roms/packages
 
 COPY ocean_upwelling.in /home/roms/applications/upwelling
 COPY run_mpich.sh /home/roms/applications/upwelling
@@ -25,8 +25,11 @@ RUN chmod 666 /etc/sudoers &&\
 USER roms
 ARG roms_username
 ARG roms_password
-ARG netcdf_version
-RUN cd /home/roms/packages && wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-${netcdf_version}.tar.gz
+# ARG netcdf_version
+# ARG hdf5_major
+# ARG hdf5_version
+# RUN cd /home/roms/packages && wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${hdf5_major}/hdf5-${hdf5_version}/src/hdf5-${hdf5_version}.tar.gz
+# RUN cd /home/roms/packages && wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-${netcdf_version}.tar.gz
 RUN svn checkout --username $roms_username --password $roms_password https://www.myroms.org/svn/src/trunk /home/roms/roms_src
 RUN cp /home/roms/roms_src/ROMS/Include/upwelling.h /home/roms/include/upwelling.h
 RUN cd /home/roms/build && make all
