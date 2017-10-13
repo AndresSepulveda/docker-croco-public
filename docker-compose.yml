@@ -5,7 +5,7 @@ services:
 # IMAGES =======================
 
   roms:
-    image: rsoutelino/roms
+    image: metocean/roms-public
     build:
       context: ./
       args:
