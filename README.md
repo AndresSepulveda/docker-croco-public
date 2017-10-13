@@ -1,2 +1,2 @@
-# docker-roms-public
+# docker-roms
 ROMS docker image

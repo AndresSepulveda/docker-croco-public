@@ -1,0 +1,52 @@
+version: '2'
+
+services:
+
+# IMAGES =======================
+
+  roms:
+    image: rsoutelino/roms
+    build:
+      context: ./
+      args:
+        roms_username: ${roms_username}
+        roms_password: ${roms_password}
+        netcdf-version: "4.4.1.1"
+
+# SERVICES ==============================
+
+  interactive:
+    image: rsoutelino/roms
+    command: /bin/bash
+    user:  roms
+    volumes_from:
+      - roms_volumes
+
+  test:
+    image: rsoutelino/roms
+    user:  roms
+    command:  cd /home/roms/applications/upwelling && ./run_mpich.sh
+    volumes_from:
+      - roms_volumes
+
+  build:
+    image: rsoutelino/roms
+    user:  roms
+    command: cd /home/roms/build && make roms roms_app=$roms_app
+    volumes_from:
+      - build_volumes
+
+
+# VOLUMES ==============================
+
+  roms_volumes:
+    image: rsoutelino/roms
+    volumes:
+      - /data/roms/upwelling:/home/roms/applications/upwelling/out
+
+  build_volumes:
+    image: rsoutelino/roms
+    volumes:
+      - /source/roms/roms_src:/home/roms/roms_src
+      - /source/roms/include:/home/roms/include
+      
