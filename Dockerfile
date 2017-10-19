@@ -25,6 +25,7 @@ RUN chmod 666 /etc/sudoers &&\
 USER roms
 ARG roms_username
 ARG roms_password
+ENV roms_app=UPWELLING
 # ARG netcdf_version
 # ARG hdf5_major
 # ARG hdf5_version
@@ -33,5 +34,5 @@ ARG roms_password
 RUN svn checkout --username $roms_username --password $roms_password https://www.myroms.org/svn/src/trunk /home/roms/roms_src
 RUN cp /home/roms/roms_src/ROMS/Include/upwelling.h /home/roms/include/upwelling.h
 RUN cd /home/roms/build && make all
-RUN cd /home/roms/applications/upwelling && cp /home/roms/bin/UPWELLING . && ./run_mpich.sh
+RUN cd /home/roms/applications/upwelling && cp /home/roms/bin/${roms_app} . && ./run_mpich.sh
 RUN rm -rf /home/roms/applications/upwelling/out/*.nc

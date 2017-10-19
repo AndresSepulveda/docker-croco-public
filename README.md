@@ -33,16 +33,12 @@ That will generate the output netcdf files at `/data/roms/upwelling`, which you 
 
 ## Build your own ROMS executable
 
-- Create a folder `/source/roms/include`, and make sure there are compatible ownerships and writting permissions between host OS and docker container.
-- Place your `myapp.h` CPP definitions file and any other header file there. 
-- Set the application name using the ENV variable `roms_app`:
-```
-export roms_app=myapp
-```
+- Create the folder `/source/roms/include` and `/source/roms/bin`, and make sure there are compatible ownerships and writting permissions between host OS and docker container.
+- Place your `myapp.h` CPP definitions file and any other necessary header file there. 
 - Use docker-compose to trigger the build:
 
 ```
-docker-compose run build
+docker-compose run -e roms_app=MYAPP build
 ```
 
 - If everything goes well, you should have the binary file `MYAPP` created. To be continued...

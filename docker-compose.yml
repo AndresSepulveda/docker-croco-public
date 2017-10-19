@@ -34,7 +34,8 @@ services:
   build:
     image: metocean/roms-public
     user:  roms
-    command: cd /home/roms/build && make roms roms_app=${roms_app}
+    working_dir: /home/roms/build
+    command: make roms roms_app=${roms_app}
     volumes_from:
       - build_volumes
 
@@ -51,4 +52,5 @@ services:
     volumes:
       # - /source/roms/roms_src:/home/roms/roms_src
       - /source/roms/include:/home/roms/include
+      - /source/roms/bin/:/home/roms/bin
       
