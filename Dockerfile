@@ -7,25 +7,25 @@ RUN apt-get update && apt-get -y install sudo wget build-essential gfortran &&\
     apt-get -y install libkernlib1-gfortran netcdf-bin hdf5-tools mpich
     
 RUN useradd -u 1001 roms &&\
-    mkdir -p /home/roms/packages &&\
-    mkdir -p /home/roms/include &&\
-    mkdir -p /home/roms/applications/upwelling/out
+    mkdir -p /home/croco/packages &&\
+    mkdir -p /home/croco/include &&\
+    mkdir -p /home/croco/applications/upwelling/out
 
-COPY build /home/roms/build
-COPY packages /home/roms/packages
+COPY build /home/croco/build
+COPY packages /home/croco/packages
 
-COPY ocean_upwelling.in /home/roms/applications/upwelling
-COPY run_mpich.sh /home/roms/applications/upwelling
+#COPY ocean_upwelling.in /home/croco/applications/upwelling
+#COPY run_mpich.sh /home/roms/applications/upwelling
 
 RUN chmod 666 /etc/sudoers &&\
-    echo "roms ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers &&\
+    echo "croco ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers &&\
     chmod 440 /etc/sudoers &&\
-    chown -R roms:roms /home/roms 
+    chown -R croco:croco /home/croco 
 
-USER roms
-ARG roms_username
-ARG roms_password
-ENV roms_app=UPWELLING
+USER croco
+#ARG croco_username
+#ARG croco_password
+ENV croco_app=UPWELLING
 # ARG netcdf_version
 # ARG hdf5_major
 # ARG hdf5_version
