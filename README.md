@@ -1,4 +1,4 @@
-# Docker image to run the Regional Ocean Modeling System - ROMS
+# Docker image to run the Coastal and Regional Ocean COmmunity model - CROCO
 
 NOTE: this project is in very early stages of development.  
 
