@@ -1,1 +1,0 @@
-mpiexec -n 2 ./UPWELLING ocean_upwelling.in > upwelling.mpich.out
