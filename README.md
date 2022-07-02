@@ -30,37 +30,9 @@ cd ..
 ./croco croco.in
 ```
 
-## Build your own ROMS executable
-
-- Create the folder `/source/roms/include` and `/source/roms/bin`, and make sure there are compatible ownerships and writting permissions between host OS and docker container.
-- Place your `myapp.h` CPP definitions file and any other necessary header file there. 
-- Use docker-compose to trigger the build:
-
-```
-docker-compose run -e roms_app=MYAPP build
-```
-
-- If everything goes well, you should have the binary file `MYAPP` created. To be continued...
-
-## Building your own docker image
-
-If you are familiar with docker, you may want to use a different ROMS version, or customise the Dockerfile, and build your own image. You're more than welcome to fork this repository and share your image with the community. 
-
-- For your ROMS login credentials, set `roms_username` and `roms_password` as ENV variables in your system. The `docker-compose.yml` and `Dockerfile` files will pipe them through when checking out the ROMS source code. 
-
-```
-docker-compose build
-```
-
-To test your image, you can use the `test` tag in the docker-compose file, writting your specific test and:
-
-```
-docker-compose run test
-```
-
-## User application
+## Build your own CROCO configuration
 
 - step 1
 - step 2
 
-Please report any bugs [here](https://github.com/metocean/docker-roms-public/issues).
+Please report any bugs [here](https://github.com/AndresSepulveda/docker-croco-public/issues).
