@@ -13,11 +13,6 @@ docker pull andressepulveda/croco_oceanv1.2.1a
 
 ## Getting started 
 
-- Clone this GitHub repository at your preferred location, let's call it `$HOME` hereinafter.
-
-- Create a folder `/data/roms/upwelling` to store the output data outside the docker container. Make sure there are compatible ownerships and writting permissions between host OS and docker container. 
-
-- Browse to `$HOME` and run:
 
 ```
 docker run -it andressepulveda/croco_oceanv1.2.1a bash
