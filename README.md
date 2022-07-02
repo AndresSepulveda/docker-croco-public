@@ -6,9 +6,9 @@ NOTE: this project is in very early stages of development.
 
 - Install docker in your system. Some guidelines [here](https://docs.docker.com/engine/installation/).
 - Create a Dockerhub account [here](https://hub.docker.com/).
-- Pull the ROMS docker image:
+- Pull the CROCO docker image:
 ```
-docker pull metocean/roms-public
+docker pull andressepulveda/croco_oceanv1.2.1a
 ```
 
 ## Getting started 
@@ -20,16 +20,20 @@ docker pull metocean/roms-public
 - Browse to `$HOME` and run:
 
 ```
-docker-compose run interactive
+docker run -it andressepulveda/croco_oceanv1.2.1a bash
 ```
 
-- Done, you're inside the docker container now. Let's run the upwelling test case. 
+- Done, you're inside the docker container now. Let's run the Benguela test case. 
 ```
-cd /home/roms/applications/upwelling
-mpiexec -n 2 ./UPWELLING ocean_upwelling.in
+cd /home/croco/croco-v1.2.1/Benguela/CROCO_FILES
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_grd.nc
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_frc.nc
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_clm.nc
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_ini.nc
+cd ..
+./jobcomp
+./croco croco.in
 ```
-
-That will generate the output netcdf files at `/data/roms/upwelling`, which you can access from your host OS. 
 
 ## Build your own ROMS executable
 
