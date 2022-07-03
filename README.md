@@ -8,14 +8,14 @@ NOTE: this project is at an early stage of development.
 - Create a Dockerhub account [here](https://hub.docker.com/).
 - Pull the CROCO docker image:
 ```
-docker pull andressepulveda/croco_oceanv1.2.1a
+docker pull andressepulveda/croco_oceanv1.2.1b
 ```
 
 ## Getting started 
 
 
 ```
-docker run -it andressepulveda/croco_oceanv1.2.1a bash
+docker run -it andressepulveda/croco_oceanv1.2.1b bash
 ```
 
 - Done, you're inside the docker container now. Let's run the Benguela test case. 
