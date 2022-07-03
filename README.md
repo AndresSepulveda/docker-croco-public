@@ -32,7 +32,6 @@ cd ..
 
 ## Build your own CROCO configuration
 
-- Step 1
 Edit the create_config.bash 
 ```
 nano create_config.bash
