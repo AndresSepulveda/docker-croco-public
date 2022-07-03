@@ -1,6 +1,6 @@
 # Docker image to run the Coastal and Regional Ocean COmmunity model - CROCO
 
-NOTE: this project is in very early stages of development.  
+NOTE: this project is at an early stage of development.  
 
 ## Pre-requisites
 
@@ -32,7 +32,7 @@ cd ..
 
 ## Build your own CROCO configuration
 
-Edit the create_config.bash 
+In the /home/croco/croco-v1.2.1 directory edit the create_config.bash 
 ```
 nano create_config.bash
 ```
@@ -48,8 +48,10 @@ Press "Y" and change to the newly created Chile directory (the name of your conf
 ```
 cd Chile
 ```
-There you should edit crocotools_param.m, cppdefs.h, and param.h
+There you should edit crocotools_param.m, cppdefs.h, param.h, croco.in
 to suit you needs.
+
+At the moment you can't use CROCOTOOLS to create the input files in this docker container.
 
 ## Bugs
 Please report any bugs [here](https://github.com/AndresSepulveda/docker-croco-public/issues).
