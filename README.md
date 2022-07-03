@@ -36,7 +36,7 @@ In the /home/croco/croco-v1.2.1 directory edit the create_config.bash
 ```
 nano create_config.bash
 ```
-change this line to the name of your configuration
+change this line to the name of your configuration, in this case "Chile"
 ```
 MY_CONFIG_NAME=Chile
 ```
@@ -44,7 +44,7 @@ run the script
 ```
 ./create_config.bash
 ```
-Press "Y" and change to the newly created Chile directory (the name of your configuration)
+Press "Y" and change to the newly created "Chile" directory (the name of your configuration)
 ```
 cd Chile
 ```
