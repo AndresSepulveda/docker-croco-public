@@ -32,7 +32,25 @@ cd ..
 
 ## Build your own CROCO configuration
 
-- step 1
-- step 2
+- Step 1
+Edit the create_config.bash 
+```
+nano create_config.bash
+```
+change this line to the name of your configuration
+```
+MY_CONFIG_NAME=Chile
+```
+run the script
+```
+./create_config.bash
+```
+Press "Y" and change to the newly created Chile directory (the name of your configuration)
+```
+cd Chile
+```
+There you should edit crocotools_param.m, cppdefs.h, and param.h
+to suit you needs.
 
+## Bugs
 Please report any bugs [here](https://github.com/AndresSepulveda/docker-croco-public/issues).
