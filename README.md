@@ -66,6 +66,12 @@ and all the datasets to allow the use of CROCO_TOOLS.
 
 **The following instructions will not work for the containers in DockHub**
 
+### Known Errors
+
+Before starting, fix this issues
+
+- "oct_start.m"
+
 Firt you need to edit "oct_start.m"
 ```
 vim oct_start.m
@@ -78,14 +84,28 @@ to
 ```
 tools_path='../../croco_tools/';
 ```
-Then do
+
+-"make_clim" fails as a ";" is missing at the end of line 206 in the create_clim.m file located in 
+```
+/home/croco/croco_tools/Preprocessing_tools
+```
+
+### Initial steps 
 ```
 octave_cli
 >oct_start
 >make_grid
 >make_forcing
+>make_clim
 ```
-Currently, "make_clim" is failing and there no X11 system do show plots from the NetCDF files
+Now all the input files shoul be located in the **CROCO_FILES** directory and the default
+Benguela simulation can be run by typing
+
+```
+./jobcomp
+./croco croco.in
+```
+
 
 ## Bugs
 Please report any bugs [here](https://github.com/AndresSepulveda/docker-croco-public/issues).
