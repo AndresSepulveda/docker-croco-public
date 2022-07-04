@@ -10,6 +10,11 @@ NOTE: this project is at an early stage of development.
 ```
 docker pull andressepulveda/croco_oceanv1.2.1b
 ```
+- Or if you use the Dockerfile type this command in the same directory where the Dockerfile is located (this will take several minutes). Change "andressepulveda/croco_ocean1.2.1b" with a name of your choice
+```
+docker build -t andressepulveda/croco_oceanv1.2.1b .
+```
+
 
 ## Getting started 
 
@@ -20,7 +25,10 @@ docker run -it andressepulveda/croco_oceanv1.2.1b bash
 
 - Done, you're inside the docker container now. Let's run the Benguela test case. 
 ```
-cd /home/croco/croco-v1.2.1/Benguela/CROCO_FILES
+cd /home/croco/croco-v1.2.1/
+./create_myconfig.bash
+(press "Y")
+cd /home/croco/croco-v1.2.1/Run/CROCO_FILES
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_grd.nc
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_frc.nc
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_clm.nc
