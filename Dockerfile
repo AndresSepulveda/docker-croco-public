@@ -25,6 +25,7 @@ RUN apt-get update \
 &&  apt-get install unzip -y \
 &&  apt-get install wget -y \
 &&  apt-get install sudo -y \
+&&  apt-get install vim -y \
 &&  apt-get install octave -y \
 &&  apt-get install octave-octcdf -y \
 &&  apt-get clean -y
