@@ -16,6 +16,7 @@ RUN apt-get update \
 &&  apt-get install make -y \
 &&  apt-get install libopenmpi-dev -y \
 &&  apt-get install libhdf5-openmpi-dev -y \
+&&  apt-get install libnetcdf-dev -y \
 &&  apt-get install libnetcdff-dev -y \
 &&  apt-get install bc -y \
 &&  apt-get install git -y \
