@@ -12,7 +12,7 @@ docker pull andressepulveda/croco_oceanv1.2.1b
 ```
 - Or if you use the Dockerfile type this command in the same directory where the Dockerfile is located (this will take several minutes). Change "andressepulveda/croco_ocean1.2.1b" with a name of your choice
 ```
-docker build -t andressepulveda/croco_oceanv1.2.1b .
+docker build -t andressepulveda/croco_oceanv1.2.1_full .
 ```
 
 
@@ -59,9 +59,13 @@ cd Chile
 There you should edit crocotools_param.m, cppdefs.h, param.h, croco.in
 to suit you needs.
 
-## Create input file
+## Create inputs file
 
-We have added Octave v4.0.0 and octcdfv1.1.8 to allow the use of CROCO_TOOLS.
+If you create your container with the Dockerfile, we have added Octave v4.0.0 and octcdfv1.1.8
+and all the datasets to allow the use of CROCO_TOOLS. 
+
+**The following instructions will not work for the containers in DockHub**
+
 Firt you need to edit "oct_start.m"
 ```
 vim oct_start.m
