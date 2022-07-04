@@ -59,7 +59,29 @@ cd Chile
 There you should edit crocotools_param.m, cppdefs.h, param.h, croco.in
 to suit you needs.
 
-At the moment you can't use CROCOTOOLS to create the input files in this docker container.
+## Create input file
+
+We have added Octave v4.0.0 and octcdfv1.1.8 to allow the use of CROCO_TOOLS.
+Firt you need to edit "oct_start.m"
+```
+vim oct_start.m
+```
+and change
+```
+tools_path='../croco_tools/';
+```
+to
+```
+tools_path='../../croco_tools/';
+```
+Then do
+```
+octave_cli
+>oct_start
+>make_grid
+>make_forcing
+```
+Currently, "make_clim" is failing and there no X11 system do show plots from the NetCDF files
 
 ## Bugs
 Please report any bugs [here](https://github.com/AndresSepulveda/docker-croco-public/issues).
