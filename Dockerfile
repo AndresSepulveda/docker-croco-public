@@ -49,3 +49,15 @@ RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco_tools-v1.2.tar.gz
 RUN gzip -d croco_tools-v1.2.tar.gz
 RUN tar -xvf croco_tools-v1.2.tar
 RUN rm croco_tools-v1.2.tar
+
+#
+# All external datasets (8.9GB)
+#
+WORKDIR /home/croco/croco_tools
+RUN wget https://data-croco.ifremer.fr/DATASETS/DATASETS_CROCOTOOLS.tar.gz
+RUN gzip -d DATASETS_CROCOTOOLS.tar.gz
+RUN tar -xvf DATASETS_CROCOTOOLS.tar
+RUN rm DATASETS_CROCOTOOLS.tar
+RUN mv DATASETS_CROCOTOOLS/* .
+RUN rm -rf DATASETS_CROCOTOOLS
+
