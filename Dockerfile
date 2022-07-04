@@ -45,7 +45,6 @@ RUN gzip -d croco-v1.2.1.tar.gz
 RUN tar -xvf croco-v1.2.1.tar
 RUN rm croco-v1.2.1.tar
 
-WORKDIR /home/croco/croco-v1.2.1
 RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco_tools-v1.2.tar.gz
 RUN gzip -d croco_tools-v1.2.tar.gz
 RUN tar -xvf croco_tools-v1.2.tar
