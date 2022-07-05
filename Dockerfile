@@ -33,11 +33,8 @@ RUN apt-get update \
 
 RUN useradd -m croco && echo "croco:croco" | chpasswd && adduser croco sudo
 
-RUN chmod 666 /etc/sudoers && \
-   echo "croco ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers &&\
-   chmod 440 /etc/sudoers &&\
-   chown -R croco:croco /home/croco
 RUN mkdir -p /home/croco
+RUN chown -R croco:croco /home/croco
 
 USER croco
 WORKDIR /home/croco/
@@ -62,3 +59,4 @@ RUN rm DATASETS_CROCOTOOLS.tar
 RUN mv DATASETS_CROCOTOOLS/* .
 RUN rm -rf DATASETS_CROCOTOOLS
 
+WORKDIR /home/croco/
