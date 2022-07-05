@@ -20,12 +20,11 @@ docker build -t andressepulveda/croco_oceanv1.2.1_full .
 
 
 ```
-docker run -it andressepulveda/croco_oceanv1.2.1b bash
+docker run -it --user croco andressepulveda/croco_oceanv1.2.1b
 ```
 
 - Done, you're inside the docker container now. Let's run the Benguela test case. 
 ```
-cd /home/croco/croco-v1.2.1/
 ./create_myconfig.bash
 (press "Y")
 cd /home/croco/croco-v1.2.1/Run/CROCO_FILES
