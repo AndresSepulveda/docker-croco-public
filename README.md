@@ -19,6 +19,8 @@ docker build -t andressepulveda/croco_oceanv1.2.1_full .
 ## Getting started 
 
 
+### Working inside the container
+
 ```
 docker run -it --user croco andressepulveda/croco_oceanv1.2.1b
 ```
@@ -27,7 +29,7 @@ docker run -it --user croco andressepulveda/croco_oceanv1.2.1b
 ```
 ./create_myconfig.bash
 (press "Y")
-cd /home/croco/croco-v1.2.1/Run/CROCO_FILES
+cd 
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_grd.nc
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_frc.nc
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_clm.nc
@@ -36,6 +38,29 @@ cd ..
 ./jobcomp
 ./croco croco.in
 ```
+and your output files will be located in */home/croco/croco-v1.2.1/Run/CROCO_FILES*
+
+### Storing input and out files outside the container
+
+Create a local directory e.g. *croco_docker* and store the input files there
+
+```
+mkdir croco_docker
+cd croco_docker
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_grd.nc
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_frc.nc
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_clm.nc
+wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_ini.nc
+cd ..
+```
+Now launch the container linking that local directory with the input/output directory in the container using the -v option
+
+```
+docker run -it -v /home/dgeo/croco_docker:/home/croco/croco-v1.2.1/Benguela/CROCO_FILES andressepulveda/croco_oceanv1.2.1c /home/croco/croco-v1.2.1/Benguela/croco /home/croco/croco-v1.2.1/Benguela/croco.in
+```
+
+
+
 
 ## Build your own CROCO configuration
 
