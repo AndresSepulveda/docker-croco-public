@@ -19,10 +19,10 @@ docker build -t andressepulveda/croco_oceanv1.2.1_full .
 ## Getting started 
 
 
-### Working inside the container
+### Working inside the container as user *croco* and in the */home/croco/croco-v1.2.1* directory
 
 ```
-docker run -it --user croco andressepulveda/croco_oceanv1.2.1b
+docker run -it --user croco -w /home/croco/croco-v1.2.1 andressepulveda/croco_oceanv1.2.1b
 ```
 
 - Done, you're inside the docker container now. Let's run the Benguela test case. 
