@@ -29,7 +29,7 @@ docker run -it --user croco -w /home/croco/croco-v1.2.1 andressepulveda/croco_oc
 ```
 ./create_myconfig.bash
 (press "Y")
-cd 
+cd Run/CROCO_FILES
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_grd.nc
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_frc.nc
 wget http://mosa.dgeo.udec.cl/CROCO2022/CursoBasico/Tutorial01/ArchivosIniciales/croco_clm.nc
