@@ -1,6 +1,6 @@
 # Docker image to run the Coastal and Regional Ocean COmmunity model - CROCO
 
-NOTE: this project is at an early stage of development.  
+Funded by ANID - Fondecyt Regular 1211230  
 
 ## Pre-requisites
 
