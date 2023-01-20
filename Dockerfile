@@ -38,15 +38,15 @@ RUN chown -R croco:croco /home/croco
 
 USER croco
 WORKDIR /home/croco/
-RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco-v1.2.1.tar.gz
-RUN gzip -d croco-v1.2.1.tar.gz
-RUN tar -xvf croco-v1.2.1.tar
-RUN rm croco-v1.2.1.tar
+RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco-v1.3.tar.gz
+RUN gzip -d croco-v1.3.tar.gz
+RUN tar -xvf croco-v1.3.tar
+RUN rm croco-v1.3.tar
 
-RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco_tools-v1.2.tar.gz
-RUN gzip -d croco_tools-v1.2.tar.gz
-RUN tar -xvf croco_tools-v1.2.tar
-RUN rm croco_tools-v1.2.tar
+RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco_tools-v1.3.tar.gz
+RUN gzip -d croco_tools-v1.3.tar.gz
+RUN tar -xvf croco_tools-v1.3.tar
+RUN rm croco_tools-v1.3.tar
 
 #
 # All external datasets (8.9GB)
