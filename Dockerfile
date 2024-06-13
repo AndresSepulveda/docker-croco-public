@@ -38,15 +38,17 @@ RUN chown -R croco:croco /home/croco
 
 USER croco
 WORKDIR /home/croco/
-RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco-v1.3.tar.gz
-RUN gzip -d croco-v1.3.tar.gz
-RUN tar -xvf croco-v1.3.tar
-RUN rm croco-v1.3.tar
+RUN wget https://gitlab.inria.fr/croco-ocean/croco/-/archive/v2.0.0/croco-v2.0.0.zip
+RUN unzip croco-v2.0.0.zip
+RUN rm croco-v2.0.0.zip
 
-RUN wget https://data-croco.ifremer.fr/CODE_ARCHIVE/croco_tools-v1.3.tar.gz
-RUN gzip -d croco_tools-v1.3.tar.gz
-RUN tar -xvf croco_tools-v1.3.tar
-RUN rm croco_tools-v1.3.tar
+RUN wget https://gitlab.inria.fr/croco-ocean/croco_tools/-/archive/v2.0.0/croco_tools-v2.0.0.zip
+RUN unzip croco_tools-v2.0.0.zip
+RUN rm croco_tools-v2.0.0.zip
+
+RUN wget https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v1.0.1/croco_pytools-v1.0.1.zip
+RUN unzip https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v1.0.1/croco_pytools-v1.0.1.zip
+RUN rm croco_pytools-v1.0.1.zip
 
 #
 # All external datasets (8.9GB)
