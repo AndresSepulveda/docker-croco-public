@@ -9,7 +9,6 @@ LABEL maintainer="andres.sepulveda@gmail.com"
 # Solene Le Gac (http://forum.croco-ocean.org/question/708/croco-in-a-docker-container/#709)
 #
 
-
 RUN apt-get update \
 &&  apt-get upgrade -y \
 &&  apt-get install gfortran -y \
