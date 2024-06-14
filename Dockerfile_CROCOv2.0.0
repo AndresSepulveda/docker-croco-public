@@ -49,6 +49,8 @@ RUN wget https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v1.0.1/croc
 RUN unzip croco_pytools-v1.0.1.zip
 RUN rm croco_pytools-v1.0.1.zip
 
+RUN "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+
 #
 # All external datasets (8.9GB)
 #
