@@ -46,7 +46,7 @@ RUN unzip croco_tools-v2.0.0.zip
 RUN rm croco_tools-v2.0.0.zip
 
 RUN wget https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v1.0.1/croco_pytools-v1.0.1.zip
-RUN unzip https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v1.0.1/croco_pytools-v1.0.1.zip
+RUN unzip croco_pytools-v1.0.1.zip
 RUN rm croco_pytools-v1.0.1.zip
 
 #
