@@ -45,16 +45,26 @@ RUN wget https://gitlab.inria.fr/croco-ocean/croco_tools/-/archive/v2.0.0/croco_
 RUN unzip croco_tools-v2.0.0.zip
 RUN rm croco_tools-v2.0.0.zip
 
+#
+# Python tools
+#
 RUN wget https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v1.0.1/croco_pytools-v1.0.1.zip
 RUN unzip croco_pytools-v1.0.1.zip
 RUN rm croco_pytools-v1.0.1.zip
 
 RUN "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+RUN micromamba self-update
+WORKDIR /home/croco/croco_pytools-v1.0.1
+RUN micromamba create -f env/environment_tools.yml  -c conda-forge
+RUN micromamba activate croco_pyenv
+WORKDIR /home/croco/croco_pytools-v1.0.1/Modules/tools_fort_routines
+RUN make clean
+RUN make
 
 #
 # All external datasets (8.9GB)
 #
-WORKDIR /home/croco/croco_tools
+WORKDIR /home/croco/croco_tools-v2.0.0
 RUN wget https://data-croco.ifremer.fr/DATASETS/DATASETS_CROCOTOOLS.tar.gz
 RUN gzip -d DATASETS_CROCOTOOLS.tar.gz
 RUN tar -xvf DATASETS_CROCOTOOLS.tar
