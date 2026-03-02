@@ -1,5 +1,4 @@
 FROM ubuntu:24.04
-# FROM debian:10-slim
 
 LABEL maintainer="hector.h.sepulveda@protonmail.com"
 
@@ -62,9 +61,9 @@ RUN rm croco_pytools-v2.0.3.zip
 RUN "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
 RUN micromamba self-update
 WORKDIR /home/croco/croco_pytools-v2.0.3
-RUN micromamba create -f env/environment_tools.yml  -c conda-forge
+RUN micromamba create -f env.yml 
 RUN micromamba activate croco_pyenv
-WORKDIR /home/croco/croco_pytools-v2.0.3/Modules/tools_fort_routines
+WORKDIR /home/croco/croco_pytools-v2.0.3/prepro/Modules/tools_fort_routines
 RUN make clean
 RUN make
 
