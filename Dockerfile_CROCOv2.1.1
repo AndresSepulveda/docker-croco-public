@@ -1,0 +1,82 @@
+FROM ubuntu:24.04
+# FROM debian:10-slim
+
+LABEL maintainer="hector.h.sepulveda@protonmail.com"
+
+#
+# Based on Dockerfiles from
+# RSoutelino (http://github.com/metocean/docker-roms-public)
+# Solene Le Gac (http://forum.croco-ocean.org/question/708/croco-in-a-docker-container/#709)
+#
+
+RUN apt-get update \
+&&  apt-get upgrade -y \
+&&  apt-get install gfortran -y \
+&&  apt-get install make -y \
+&&  apt-get install libopenmpi-dev -y \
+&&  apt-get install libhdf5-openmpi-dev -y \
+&&  apt-get install libnetcdf-dev -y \
+&&  apt-get install libnetcdff-dev -y \
+&&  apt-get install bc -y \
+&&  apt-get install git -y \
+&&  apt-get install curl -y \
+&&  apt-get install netcdf-bin -y \
+&&  apt-get install nco -y \
+&&  apt-get install unzip -y \
+&&  apt-get install wget -y \
+&&  apt-get install sudo -y \
+&&  apt-get install vim -y \
+&&  apt-get install octave -y \
+&&  apt-get install octave-netcdf -y \
+&&  apt-get clean -y
+
+RUN useradd -m croco && echo "croco:croco" | chpasswd && adduser croco sudo
+
+RUN mkdir -p /home/croco
+RUN chown -R croco:croco /home/croco
+
+USER croco
+WORKDIR /home/croco/
+
+#
+# Get CROCO model code tools
+#
+RUN wget https://gitlab.inria.fr/croco-ocean/croco/-/archive/v2.1.1/croco-v2.1.1.zip
+RUN unzip croco-v2.1.1.zip
+RUN rm croco-v2.1.1.zip
+
+#
+# Get CROCO_TOOLS (Matlab/Octave_OctCDF)tools
+#
+RUN wget https://gitlab.inria.fr/croco-ocean/croco_tools/-/archive/v2.1.1/croco_tools-v2.1.1.zip
+RUN unzip croco_tools-v2.1.1.zip
+RUN rm croco_tools-v2.1.1.zip
+
+#
+# Get CROCO_PyTOOLS
+#
+RUN wget https://gitlab.inria.fr/croco-ocean/croco_pytools/-/archive/v2.0.3/croco_pytools-v2.0.3.zip
+RUN unzip croco_pytools-v2.0.3.zip
+RUN rm croco_pytools-v2.0.3.zip
+
+RUN "${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+RUN micromamba self-update
+WORKDIR /home/croco/croco_pytools-v2.0.3
+RUN micromamba create -f env/environment_tools.yml  -c conda-forge
+RUN micromamba activate croco_pyenv
+WORKDIR /home/croco/croco_pytools-v2.0.3/Modules/tools_fort_routines
+RUN make clean
+RUN make
+
+#
+# All external datasets (8.9GB)
+#
+WORKDIR /home/croco/croco_tools-v2.1.1
+RUN wget https://data-croco.ifremer.fr/DATASETS/DATASETS_CROCOTOOLS.tar.gz
+RUN gzip -d DATASETS_CROCOTOOLS.tar.gz
+RUN tar -xvf DATASETS_CROCOTOOLS.tar
+RUN rm DATASETS_CROCOTOOLS.tar
+RUN mv DATASETS_CROCOTOOLS/* .
+RUN rm -rf DATASETS_CROCOTOOLS
+
+WORKDIR /home/croco/
